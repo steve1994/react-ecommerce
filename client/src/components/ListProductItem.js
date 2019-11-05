@@ -1,4 +1,6 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Star from './Star'
 
 export default class ListProductItem extends React.Component {
 
@@ -6,7 +8,17 @@ export default class ListProductItem extends React.Component {
         super(props);
     }
 
+    averageRate(rateHistory) {
+        let length = rateHistory.length;
+        let sum = 0;
+        for (let i=0;i<rateHistory.length;i++) {
+            sum += parseInt(rateHistory[i]);
+        }
+        return sum / length;
+    }
+
     render() {
+        let accumulativeRate = this.averageRate(this.props.rate);
         return (
           <li class="product_item">
             <div class="product_image">
@@ -28,13 +40,13 @@ export default class ListProductItem extends React.Component {
                 <a href="#"><span class="price_new">IDR {this.props.price}</span></a>
               </div>
               <div class="product_price">
-                <span class="product_rating"></span>
+                <Star rate={`${accumulativeRate}`} />
               </div>
               <div class="product_desc">
                 <p class="truncate">{this.props.description}</p>
               </div>
               <div class="product_price">
-                <button class="btn btn-primary">DETAIL ITEM</button>
+                <Link to={`/detail_ad/${this.props.origin_id}`}><button class="btn btn-primary">DETAIL ITEM</button></Link>
               </div>
             </div>
           </li>

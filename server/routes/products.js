@@ -29,15 +29,37 @@ router.get('/:idProduct', function(req, res) {
       })
 })
 
+router.put('/:idProduct/:vote', function(req, res) {
+    let idProduct = req.params.idProduct;
+    let vote = parseInt(req.params.vote);
+    Product.find({_id:idProduct})
+      .exec(function (err,response) {
+          let arrayVote = response[0].rate;
+          arrayVote.push(vote);
+          if (err) {
+              res.status(400).json({status:'failed',error:err});
+          } else {
+              Product.findOneAndUpdate({_id:idProduct},{rate:arrayVote},function (err,response) {
+                  if (err) {
+                      res.status(400).json({status:'failed',error:err});
+                  } else {
+                      res.status(201).json({status:'success',data:response});
+                  }
+              })
+          }
+      })
+})
+
 router.post('/', function (req,res) {
     let title = req.body.title;
-    let rate = req.body.rate;
+    let rate = parseInt(req.body.rate);
     let description = req.body.description;
     let price = req.body.price;
     let brand = req.body.brand;
     let detailProduct = req.body.detailProduct;
     try {
-        const newProduct = new Product({title,rate,description,price,brand,detailProduct});
+        let arrayRate = [rate];
+        const newProduct = new Product({title,rate:arrayRate,description,price,brand,detailProduct});
         newProduct.save().then(dataCreated => {
             res.status(201).json({status:'success',data:dataCreated})
         })

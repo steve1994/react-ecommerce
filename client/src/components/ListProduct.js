@@ -15,7 +15,7 @@ class ListProduct extends React.Component {
 
     render() {
         let listItem = this.props.products.map((item) => {
-            return (<ListProductItem title={item.title} price={item.price} description={item.description} />);
+            return (<ListProductItem origin_id={item._id} rate={item.rate} title={item.title} price={item.price} description={item.description} />);
         });
         return (
             <ul class="product_list list">

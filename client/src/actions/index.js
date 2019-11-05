@@ -56,3 +56,50 @@ export const postProduct = (title,rate,description,price,brand,detailProduct) =>
         })
     }
 }
+
+// PREVIEW DETAIL PRODUCT
+
+export const viewProductSuccess = (product) => ({
+    type: 'VIEW_PRODUCT_SUCCESS',product
+})
+
+export const viewProductFailure = () => ({
+    type: 'VIEW_PRODUCT_FAILURE'
+})
+
+export const viewProduct = (idProduct) => {
+    return dispatch => {
+        return request.get(`products/${idProduct}`)
+        .then(function(response) {
+            dispatch(viewProductSuccess(response.data.data));
+        })
+        .catch(function(error) {
+            console.error(error);
+            dispatch(viewProductFailure());
+        })
+    }
+}
+
+// VOTE product_title
+
+export const voteProductSuccess = (product) => ({
+    type: 'VOTE_PRODUCT_SUCCESS', product
+})
+
+export const voteProductFailure = () => ({
+    type: 'VOTE_PRODUCT_FAILURE'
+})
+
+export const voteProduct = (idProduct, vote) => {
+    return dispatch => {
+        return request.put(`products/${idProduct}/${vote}`)
+        .then(function(response) {
+            dispatch(voteProductSuccess(response.data.data));
+            alert('Thank you for your votes!');
+        })
+        .catch(function (error) {
+            console.error(error);
+            dispatch(voteProductFailure());
+        })
+    }
+}
