@@ -53,7 +53,7 @@ export const postProduct = (title,rate,description,price,brand,detailProduct) =>
         .catch(function(error) {
             console.error(error);
             dispatch(postProductFailed());
-        })
+        })import jquery
     }
 }
 

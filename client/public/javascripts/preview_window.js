@@ -14,6 +14,7 @@ $(document).ready(function(){
 
          //-- Click on QUANTITY
          $(".btn-minus").on("click",function(){
+            console.log('btn minus clicked');
              var now = $(".section > div > input").val();
              if ($.isNumeric(now)){
                  if (parseInt(now) -1 > 0){ now--;}
@@ -23,6 +24,7 @@ $(document).ready(function(){
              }
          })
          $(".btn-plus").on("click",function(){
+            console.log('btn plus clicked');
              var now = $(".section > div > input").val();
              if ($.isNumeric(now)){
                 if (parseInt(now) < 5) {now++;}
