@@ -31,6 +31,30 @@ export const loadProduct = (limit,numPage) => {
     }
 }
 
+// LOAD NEXT PAGE
+
+export const loadNextPageSuccess = (products) => ({
+    type: 'LOAD_NEXT_PAGE_SUCCESS',
+    products
+})
+
+export const loadNextPageFailure = () => ({
+    type: 'LOAD_NEXT_PAGE_FAILURE'
+})
+
+export const loadNextPage = (limit,numPage) => {
+    return dispatch => {
+        return request.get(`products/${limit}/${numPage}`)
+        .then(function(response) {
+            dispatch(loadNextPageSuccess(response.data));
+        })
+        .catch(function(error) {
+            console.error(error);
+            dispatch(loadNextPageFailure());
+        })
+    }
+}
+
 // SAVE PRODUCTS
 
 export const postProductSuccess = (products) => ({
@@ -53,7 +77,7 @@ export const postProduct = (title,rate,description,price,brand,detailProduct) =>
         .catch(function(error) {
             console.error(error);
             dispatch(postProductFailed());
-        })import jquery
+        })
     }
 }
 

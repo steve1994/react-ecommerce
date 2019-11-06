@@ -10,7 +10,7 @@ export default class OneWindow extends React.Component {
     render() {
         return (
           <div>
-            <div class="product_grid">
+            <div className="product_grid">
               <ListProduct />
             </div>
           </div>

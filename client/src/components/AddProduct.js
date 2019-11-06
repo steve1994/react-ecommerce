@@ -60,19 +60,19 @@ class AddProduct extends React.Component {
 
     render() {
         return (
-          <div class="container">
+          <div className="container">
               <form>
-                  <div class="form-group row">
-                      <label for="title" class="col-sm-2 col-form-label"><strong>Title</strong></label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" id="title" placeholder="title" value={this.state.title} onChange={this.handleTitle} required />
+                  <div className="form-group row">
+                      <label htmlFor="title" className="col-sm-2 col-form-label"><strong>Title</strong></label>
+                      <div className="col-sm-10">
+                          <input type="text" className="form-control" id="title" placeholder="title" value={this.state.title} onChange={this.handleTitle} required />
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <label for="rate" class="col-sm-2 col-form-label"><strong>Rate</strong></label>
-                      <div class="col-sm-10">
-                          <select id="rate" class="form-control" value={this.state.rate} onChange={this.handleRate}>
-                              <option selected value="1">1</option>
+                  <div className="form-group row">
+                      <label htmlFor="rate" className="col-sm-2 col-form-label"><strong>Rate</strong></label>
+                      <div className="col-sm-10">
+                          <select id="rate" className="form-control" value={this.state.rate} onChange={this.handleRate}>
+                              <option defaultValue value="1">1</option>
                               <option value="2">2</option>
                               <option value="3">3</option>
                               <option value="4">4</option>
@@ -80,34 +80,34 @@ class AddProduct extends React.Component {
                           </select>
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <label for="description" class="col-sm-2 col-form-label"><strong>Description</strong></label>
-                      <div class="col-sm-10">
-                          <textarea id="description" class="form-control" rows="3" placeholder="description" value={this.state.description} onChange={this.handleDescription} required />
+                  <div className="form-group row">
+                      <label htmlFor="description" className="col-sm-2 col-form-label"><strong>Description</strong></label>
+                      <div className="col-sm-10">
+                          <textarea id="description" className="form-control" rows="3" placeholder="description" value={this.state.description} onChange={this.handleDescription} required />
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <label for="price" class="col-sm-2 col-form-label"><strong>Price</strong></label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" id="price" placeholder="price" value={this.state.price} onChange={this.handlePrice} required />
+                  <div className="form-group row">
+                      <label htmlFor="price" className="col-sm-2 col-form-label"><strong>Price</strong></label>
+                      <div className="col-sm-10">
+                          <input type="text" className="form-control" id="price" placeholder="price" value={this.state.price} onChange={this.handlePrice} required />
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <label for="brand" class="col-sm-2 col-form-label"><strong>Brand</strong></label>
-                      <div class="col-sm-10">
-                          <input type="text" class="form-control" id="brand" placeholder="brand" value={this.state.brand} onChange={this.handleBrand} required />
+                  <div className="form-group row">
+                      <label htmlFor="brand" className="col-sm-2 col-form-label"><strong>Brand</strong></label>
+                      <div className="col-sm-10">
+                          <input type="text" className="form-control" id="brand" placeholder="brand" value={this.state.brand} onChange={this.handleBrand} required />
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <label for="detail_product" class="col-sm-2 col-form-label"><strong>Detail Product</strong></label>
-                      <div class="col-sm-10">
-                          <textarea id="detail_product" class="form-control" rows="10" placeholder="Use Markdown Here" value={this.state.detailProduct} onChange={this.handleDetailProduct} required></textarea>
+                  <div className="form-group row">
+                      <label htmlFor="detail_product" className="col-sm-2 col-form-label"><strong>Detail Product</strong></label>
+                      <div className="col-sm-10">
+                          <textarea id="detail_product" className="form-control" rows="10" placeholder="Use Markdown Here" value={this.state.detailProduct} onChange={this.handleDetailProduct} required></textarea>
                       </div>
                   </div>
-                  <div class="form-group row">
-                      <div class="col-sm-10">
-                          <button type="submit" class="btn btn-success" onClick={this.addButtonAction}>Add</button>&nbsp;
-                          <a class="btn btn-warning" onClick={this.cancelButtonAction}>Cancel</a>
+                  <div className="form-group row">
+                      <div className="col-sm-10">
+                          <button type="submit" className="btn btn-success" onClick={this.addButtonAction}>Add</button>&nbsp;
+                          <a className="btn btn-warning" onClick={this.cancelButtonAction}>Cancel</a>
                       </div>
                   </div>
               </form>

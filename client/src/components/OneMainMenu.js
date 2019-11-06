@@ -14,7 +14,7 @@ export default class OneMainMenu extends React.Component {
         return (
           <Router>
             <div>
-              <div class="navigation">
+              <div className="navigation">
                 <Link to={'/add_ads'}>Add Ads</Link>
               </div>
               <Switch>

@@ -20,33 +20,33 @@ export default class ListProductItem extends React.Component {
     render() {
         let accumulativeRate = this.averageRate(this.props.rate);
         return (
-          <li class="product_item">
-            <div class="product_image">
+          <li className="product_item">
+            <div className="product_image">
               <a href="#"><img src="https://bit.ly/1myplK1" alt="" /></a>
-                <div class="product_buttons">
-                  <button class="product_heart"><i class="fa fa-heart"></i></button>
-                  <button class="product_compare"><i class="fa fa-random"></i></button>
-                  <button class="add_to_cart"><i class="fa fa-shopping-cart"></i></button>
-                  <div class="quick_view">
+                <div className="product_buttons">
+                  <button className="product_heart"><i className="fa fa-heart"></i></button>
+                  <button className="product_compare"><i className="fa fa-random"></i></button>
+                  <button className="add_to_cart"><i className="fa fa-shopping-cart"></i></button>
+                  <div className="quick_view">
                     <a href="#"><h6>Quick View</h6></a>
                   </div>
                 </div>
             </div>
-            <div class="product_values">
-              <div class="product_title">
+            <div className="product_values">
+              <div className="product_title">
                 <h5>{this.props.title}</h5>
               </div>
-              <div class="product_price">
-                <a href="#"><span class="price_new">IDR {this.props.price}</span></a>
+              <div className="product_price">
+                <a href="#"><span className="price_new">IDR {this.props.price}</span></a>
               </div>
-              <div class="product_price">
+              <div className="product_price">
                 <Star rate={`${accumulativeRate}`} />
               </div>
-              <div class="product_desc">
-                <p class="truncate">{this.props.description}</p>
+              <div className="product_desc">
+                <p className="truncate">{this.props.description}</p>
               </div>
-              <div class="product_price">
-                <Link to={`/detail_ad/${this.props.origin_id}`}><button class="btn btn-primary">DETAIL ITEM</button></Link>
+              <div className="product_price">
+                <Link to={`/detail_ad/${this.props.origin_id}`}><button className="btn btn-primary">DETAIL ITEM</button></Link>
               </div>
             </div>
           </li>

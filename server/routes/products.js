@@ -3,7 +3,7 @@ var router = express.Router();
 const Product = require('../model/products')
 
 router.get('/:limit/:page', function(req, res) {
-    let limit = parseInt(req.params.limit) || 3;
+    let limit = parseInt(req.params.limit) || 7;
     let numSkipPage = ((parseInt(req.params.page)-1) * limit) || 0;
     Product.find()
       .skip(numSkipPage)
