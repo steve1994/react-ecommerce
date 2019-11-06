@@ -69,7 +69,7 @@ export const postProduct = (title,rate,description,price,brand,detailProduct) =>
     return dispatch => {
         return request.post('products',{title,rate,description,price,brand,detailProduct})
         .then(function(response) {
-            return request.get('products/3/1')
+            return request.get('products/7/1')
             .then(function(response) {
                 dispatch(postProductSuccess(response.data));
             })
