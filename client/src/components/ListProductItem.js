@@ -22,7 +22,7 @@ export default class ListProductItem extends React.Component {
         return (
           <li className="product_item">
             <div className="product_image">
-              <a href="#"><img src="https://bit.ly/1myplK1" alt="" /></a>
+              <a href="#"><img src={this.props.imagePath ? `uploaded_image/${this.props.imagePath}` : "https://bit.ly/1myplK1"} alt="" /></a>
                 <div className="product_buttons">
                   <button className="product_heart"><i className="fa fa-heart"></i></button>
                   <button className="product_compare"><i className="fa fa-random"></i></button>

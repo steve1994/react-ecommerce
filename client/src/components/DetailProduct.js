@@ -31,7 +31,7 @@ class DetailProduct extends React.Component {
           <div class="container">
             	<div class="row">
                    <div class="col-xs-4 item-photo">
-                        <img style={{maxWidth:'100%'}} src="https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg" />
+                        <img style={{maxWidth:'100%'}} src={this.props.detailProduct.imageProduct ? `/uploaded_image/${this.props.detailProduct.imageProduct}` : "https://ak1.ostkcdn.com/images/products/8818677/Samsung-Galaxy-S4-I337-16GB-AT-T-Unlocked-GSM-Android-Cell-Phone-85e3430e-6981-4252-a984-245862302c78_600.jpg"} />
                     </div>
                     <div class="col-xs-5" style={{border:'0px solid gray'}}>
                         <h3>{this.props.detailProduct.title}</h3>

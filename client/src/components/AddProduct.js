@@ -6,13 +6,14 @@ class AddProduct extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {title:'',rate:'1',description:'',price:'',brand:'',detailProduct:''};
+        this.state = {title:'',rate:'1',description:'',price:'',brand:'',detailProduct:'',imageProduct:''};
         this.handleTitle = this.handleTitle.bind(this);
         this.handleRate = this.handleRate.bind(this);
         this.handleDescription = this.handleDescription.bind(this);
         this.handlePrice = this.handlePrice.bind(this);
         this.handleBrand = this.handleBrand.bind(this);
         this.handleDetailProduct = this.handleDetailProduct.bind(this);
+        this.handleImageProduct = this.handleImageProduct.bind(this);
         this.cancelButtonAction = this.cancelButtonAction.bind(this);
         this.addButtonAction = this.addButtonAction.bind(this);
     }
@@ -41,8 +42,12 @@ class AddProduct extends React.Component {
         this.setState({detailProduct:e.target.value});
     }
 
+    handleImageProduct(e) {
+        this.setState({imageProduct:e.target.files[0]});
+    }
+
     cancelButtonAction(e) {
-        this.setState({title:'',rate:'1',description:'',price:'',brand:'',detailProduct:''})
+        this.setState({title:'',rate:'1',description:'',price:'',brand:'',detailProduct:'',imageProduct:''})
         this.props.history.push('/');
     }
 
@@ -53,8 +58,9 @@ class AddProduct extends React.Component {
                               ,this.state.description
                               ,this.state.price
                               ,this.state.brand
-                              ,this.state.detailProduct);
-        this.setState({title:'',rate:'1',description:'',price:'',brand:'',detailProduct:''})
+                              ,this.state.detailProduct
+                              ,this.state.imageProduct);
+        this.setState({title:'',rate:'1',description:'',price:'',brand:'',detailProduct:'',imageProduct:''})
         this.props.history.push('/');
     }
 
@@ -105,6 +111,12 @@ class AddProduct extends React.Component {
                       </div>
                   </div>
                   <div className="form-group row">
+                      <label htmlFor="image_product" className="col-sm-2 col-form-label"><strong>Image Product</strong></label>
+                      <div className="col-sm-10">
+                          <input type="file" className="form-control-file" id="image_product" onChange={this.handleImageProduct} required />
+                      </div>
+                  </div>
+                  <div className="form-group row">
                       <div className="col-sm-10">
                           <button type="submit" className="btn btn-success" onClick={this.addButtonAction}>Add</button>&nbsp;
                           <a className="btn btn-warning" onClick={this.cancelButtonAction}>Cancel</a>
@@ -117,7 +129,7 @@ class AddProduct extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    postProduct: (title,rate,description,price,brand,detailProduct) => dispatch(postProduct(title,rate,description,price,brand,detailProduct))
+    postProduct: (title,rate,description,price,brand,detailProduct,imageProduct) => dispatch(postProduct(title,rate,description,price,brand,detailProduct,imageProduct))
 });
 
 export default connect(

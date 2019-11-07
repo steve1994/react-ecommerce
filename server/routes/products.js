@@ -1,6 +1,30 @@
 var express = require('express');
 var router = express.Router();
+var path = require('path');
 const Product = require('../model/products')
+
+router.put('/upload/:idProduct', function (req,res) {
+    let idProduct = req.params.idProduct;
+    let uploadedFile = req.files ? req.files.files : null;
+    let fileName = req.files ? (Date.now() + '_' + req.files.files.name) : null;
+    if (uploadedFile) {
+        uploadedFile.mv(path.join(__dirname,`../../client/public/uploaded_image/${fileName}`), function (err) {
+            if (err) {
+                res.status(400).json({status:'failed',error:err})
+            } else {
+                Product.findOneAndUpdate({_id:idProduct},{imageProduct:fileName},function (err,response) {
+                    if (err) {
+                        res.status(400).json({status:'failed',error:err});
+                    } else {
+                        res.status(201).json({status:'success',data:response});
+                    }
+                })
+            }
+        })
+    } else {
+        res.status(400).json({status:'failed',error:'file uploaded is empty'});
+    }
+})
 
 router.get('/:limit/:page', function(req, res) {
     let limit = parseInt(req.params.limit) || 7;

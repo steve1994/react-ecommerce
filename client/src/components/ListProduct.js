@@ -32,7 +32,7 @@ class ListProduct extends React.Component {
     render() {
         const loader = <div>Loading ...</div>;
         let listItem = this.props.products.map((item,index) => {
-            return (<ListProductItem key={index} origin_id={item._id} rate={item.rate} title={item.title} price={item.price} description={item.description} />);
+            return (<ListProductItem key={index} imagePath={item.imageProduct} origin_id={item._id} rate={item.rate} title={item.title} price={item.price} description={item.description} />);
         });
         return (
             <div id="productlist">

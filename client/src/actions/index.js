@@ -1,4 +1,5 @@
 import axios from 'axios';
+var path = require('path');
 
 const API_URL = 'http://localhost:3002/api/'
 
@@ -65,13 +66,19 @@ export const postProductFailed = () => ({
     type: 'POST_PRODUCT_FAILURE'
 })
 
-export const postProduct = (title,rate,description,price,brand,detailProduct) => {
+export const postProduct = (title,rate,description,price,brand,detailProduct,imageProduct) => {
     return dispatch => {
         return request.post('products',{title,rate,description,price,brand,detailProduct})
         .then(function(response) {
-            return request.get('products/7/1')
+            let idProduct = response.data.data._id;
+            let formData = new FormData();
+            formData.append('files',imageProduct);
+            return request.put(`products/upload/${idProduct}`,formData)
             .then(function(response) {
-                dispatch(postProductSuccess(response.data));
+                return request.get('products/7/1')
+                .then(function(response) {
+                    dispatch(postProductSuccess(response.data));
+                })
             })
         })
         .catch(function(error) {
